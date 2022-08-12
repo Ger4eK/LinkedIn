@@ -3,7 +3,7 @@ const nextConfig = {
   darkMode: 'class',
   images: {
     dangerouslyAllowSVG: true,
-    domains: ['rb.gy'],
+    domains: ['rb.gy', 'public'],
   },
 };
 

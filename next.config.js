@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-}
+  darkMode: 'class',
+  images: {
+    dangerouslyAllowSVG: true,
+    domains: ['rb.gy'],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

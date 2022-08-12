@@ -3,3 +3,5 @@
 - NextJS
 - Tailwind CSS
 - Material UI
+- NextAuthJS
+- MongoDB

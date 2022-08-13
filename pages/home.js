@@ -8,8 +8,9 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import mainImg from '../public/mainImg.svg';
 import Head from 'next/head';
+import { getProviders, signIn } from 'next-auth/react';
 
-const Home = () => {
+const Home = ({ providers }) => {
   return (
     <div className='space-y-10 relative'>
       <Head>
@@ -29,11 +30,18 @@ const Home = () => {
             <HeaderLink Icon={OndemandVideoSharpIcon} text='Learning' />
             <HeaderLink Icon={BusinessCenterIcon} text='Jobs' />
           </div>
-          <div className=' pl-4'>
-            <button className=' text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1.5 transition-all hover:bg-blue-200 '>
-              Sign in
-            </button>
-          </div>
+          {Object.values(providers).map((provider) => (
+            <div key={provider.name}>
+              <div className='pl-4'>
+                <button
+                  className='text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1.5 transition-all hover:bg-blue-200'
+                  onClick={() => signIn(provider.id, { callbackUrl: '/' })}
+                >
+                  Sign in
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </header>
 
@@ -66,3 +74,13 @@ const Home = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps(context) {
+  const providers = await getProviders();
+
+  return {
+    props: {
+      providers,
+    },
+  };
+}

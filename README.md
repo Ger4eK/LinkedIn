@@ -5,3 +5,4 @@
 - Material UI
 - NextAuthJS
 - MongoDB
+- next-themes

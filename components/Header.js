@@ -79,13 +79,6 @@ const Header = () => {
                 <span className='absolute right-0.5'>🌞</span>
               </div>
             )}
-
-            <button
-              className='text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1.5 transition-all hover:bg-blue-200'
-              onClick={signOut}
-            >
-              Sign out
-            </button>
           </div>
         </div>
       </div>

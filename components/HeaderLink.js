@@ -1,9 +1,12 @@
 import React from 'react';
+import { signOut, useSession } from 'next-auth/react';
 
 const HeaderLink = ({ Icon, text, avatar, feed, active, hidden }) => {
+  const { data: session } = useSession();
   {
     /* //! to overwrite mui styles we need to use !important flag */
   }
+
   return (
     <div
       className={`${
@@ -14,7 +17,11 @@ const HeaderLink = ({ Icon, text, avatar, feed, active, hidden }) => {
           : 'text-gray-500 hover:text-gray-700'
       } ${active ? '!text-black dark:!text-white' : ''}`}
     >
-      {avatar ? <Icon className='!h-7 !w-7 lg:!-mb-1' /> : <Icon />}
+      {avatar ? (
+        <Icon className='!h-7 !w-7 lg:!-mb-1' src={session?.user?.image} onClick={signOut} />
+      ) : (
+        <Icon />
+      )}
       <h4
         className={`text-sm ${
           feed ? 'hidden lg:flex justify-center w-full mx-auto' : ''

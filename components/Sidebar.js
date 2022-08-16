@@ -5,7 +5,7 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import { signOut, useSession } from 'next-auth/react';
 
 const Sidebar = () => {
-  //  const { data: session } = useSession();
+  const { data: session } = useSession();
   return (
     <div className='space-y-2 min-w-max max-w-lg'>
       {/* Top */}
@@ -14,17 +14,16 @@ const Sidebar = () => {
           <Image src='https://rb.gy/i26zak' layout='fill' priority />
         </div>
         <Avatar
-          // onClick={signOut}
-          // src={session?.user?.image}
-          src='https://play-lh.googleusercontent.com/uh-YyABDPOU_NdZno8Eq11YkNu6BGNButL4YApda9rzc1YAHcLJyFYv7_yEy-s9Tbg'
+          onClick={signOut}
+          src={session?.user?.image}
           className='!h-14 !w-14 !border-2 !absolute !top-4 !cursor-pointer'
         />
         <div className=' mt-5 py-4 space-x-0.5'>
           <h4 className='hover:underline decoration-gray-500 underline-offset-1 cursor-pointer'>
-            Oleh Hreskiv
+            {session?.user?.name}
           </h4>
           <p className=' text-black/60 dark:text-white/75 text-sm'>
-            olehhreskiv@gmail.com
+            {session?.user?.email}
           </p>
         </div>
         <div className='hidden md:inline text-left dark:text-white/75 text-sm '>

@@ -4,9 +4,16 @@ import Sidebar from '../components/Sidebar';
 import { getSession, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Feed from '../components/Feed';
+import Modal from '../components/Modal';
+import { AnimatePresence } from 'framer-motion';
+import { useRecoilState } from 'recoil';
+import { modalState, modalTypeState } from '../atoms/modalAtoms';
 
 export default function Home() {
+  const [modalOpen, setModalOpen] = useRecoilState(modalState);
+  const [modalType, setModalType] = useRecoilState(modalTypeState);
   const router = useRouter();
+
   const { status } = useSession({
     required: true,
     onUnauthenticated() {
@@ -29,6 +36,11 @@ export default function Home() {
           <Feed />
         </div>
         {/* Widgets */}
+        <AnimatePresence>
+          {modalOpen && (
+            <Modal handleClose={() => setModalOpen(false)} type={modalType} />
+          )}
+        </AnimatePresence>
       </main>
     </div>
   );

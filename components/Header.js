@@ -49,7 +49,7 @@ const Header = () => {
           </div>
         </div>
         <div className='flex items-center space-x-6'>
-          <div className='hidden sm:flex space-x-8 pr-4 items-center'>
+          <div className='flex space-x-8 pr-4 items-center'>
             <HeaderLink Icon={HomeRoundedIcon} text='Home' feed active />
             <HeaderLink Icon={GroupIcon} text='My Network' feed />
             <HeaderLink Icon={BusinessCenterIcon} text='Jobs' feed hidden />

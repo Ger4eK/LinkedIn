@@ -2,6 +2,7 @@
 
 - ReactJS 18
 - NextJS
+- Recoil
 - Tailwind CSS
 - Material UI
 - NextAuthJS

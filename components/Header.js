@@ -39,7 +39,7 @@ const Header = () => {
               )}
             </>
           )}
-          <div className='flex items-center space-x-1 dark:md:bg-gray-700 py-2.5 px-4 rounded w-full'>
+          <div className='flex items-center space-x-1 dark:md:bg-gray-700 py-2.5 px-2 md:px-4 rounded w-full'>
             <SearchRoundedIcon />
             <input
               type='text'

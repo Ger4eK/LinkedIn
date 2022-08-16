@@ -1,4 +1,5 @@
 ### Full Stack
+
 - ReactJS 18
 - NextJS
 - Tailwind CSS
@@ -6,3 +7,4 @@
 - NextAuthJS
 - MongoDB
 - next-themes
+- framer-motion

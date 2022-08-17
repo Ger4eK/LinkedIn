@@ -4,6 +4,9 @@ import Sidebar from '../components/Sidebar';
 import { getSession, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Feed from '../components/Feed';
+import Modal from '../components/Modal';
+import { useModal } from '../context/ModalContext';
+import { AnimatePresence } from 'framer-motion';
 
 export default function Home() {
   const router = useRouter();
@@ -14,6 +17,7 @@ export default function Home() {
       router.push('/home');
     },
   });
+  const [modalOpen, modalType, setModalOpen] = useModal();
 
   return (
     <div className='bg-[#F3F2EF] dark:bg-black dark:text-white h-screen overflow-y-scroll md:space-y-6'>
@@ -29,6 +33,11 @@ export default function Home() {
           <Feed />
         </div>
         {/* Widgets */}
+        <AnimatePresence>
+          {modalOpen && (
+            <Modal handleClose={() => setModalOpen(false)} type={modalType} />
+          )}
+        </AnimatePresence>
       </main>
     </div>
   );

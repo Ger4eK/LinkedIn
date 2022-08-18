@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import { handlePostState, useSSRPostsState } from '../atoms/postAtom';
 import Input from './Input';
 
-const Feed = () => {
+const Feed = ({posts}) => {
   const [realtimePosts, setRealtimePosts] = useState([]);
   const [handlePost, setHandlePost] = useRecoilState(handlePostState);
   const [useSSRPosts, setUseSSRPosts] = useRecoilState(useSSRPostsState);

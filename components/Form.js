@@ -4,7 +4,9 @@ const Form = () => {
   const [input, setInput] = useState('');
   const [photoUrl, setPhotoUrl] = useState('');
 
-  const uploadPost = () => {};
+  const uploadPost = async (event) => {
+    event.preventDefault();
+  };
   return (
     <form className='flex flex-col relative space-y-2 text-black/80 dark:text-white/75'>
       <textarea

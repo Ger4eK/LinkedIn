@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRecoilState } from 'recoil';
 import { modalState } from '../atoms/modalAtoms';
+import { handlePostState } from '../atoms/postAtom';
 
 const Form = () => {
   const { data: session } = useSession();
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
+  const [handlePost, setHandlePost] = useRecoilState(handlePostState);
   const [input, setInput] = useState('');
   const [photoUrl, setPhotoUrl] = useState('');
 
@@ -28,6 +30,8 @@ const Form = () => {
     });
     const responseData = await response.json();
 
+    //! we set setHandlePost to true because we need re-fetch after adding new post into db
+    setHandlePost(true);
     setModalOpen(false);
   };
 

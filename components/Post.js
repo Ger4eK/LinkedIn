@@ -7,12 +7,17 @@ import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import ReplyRoundedIcon from '@mui/icons-material/ReplyRounded';
 import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
 import React, { useState } from 'react';
-import { modalState } from '../atoms/modalAtoms';
+import { modalState, modalTypeState } from '../atoms/modalAtoms';
+import { handlePostState, getPostState } from '../atoms/postAtom';
 import { useRecoilState } from 'recoil';
+import { truncate } from '../util/truncate';
 
 const Post = ({ post, modalPost }) => {
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
+  const [modalType, setModalType] = useRecoilState(modalTypeState);
+  const [postState, setPostState] = useRecoilState(getPostState);
   const [showInput, setShowInput] = useState(false);
+
   return (
     <div
       className={`bg-white dark:bg-[#1D2226] ${
@@ -37,6 +42,33 @@ const Post = ({ post, modalPost }) => {
           </IconButton>
         )}
       </div>
+      {/* our users can attach photo and write text or they can skip photo part
+      or text. And for that reason we are checking if post.input or
+      post.photoUrl are empty we don't want to ocupatie any sort of space*/}
+      {post.input && (
+        <div className='px-2.5 break-all md:break-normal cursor-pointer'>
+          {modalPost || showInput ? (
+            <p onClick={() => setShowInput(false)}>{post.input}</p>
+          ) : (
+            <p onClick={() => setShowInput(true)}>
+              {truncate(post.input, 150)}
+            </p>
+          )}
+        </div>
+      )}
+      
+      {post.photoUrl && !modalPost && (
+        <img
+          src={post.photoUrl}
+          alt=''
+          className='w-full cursor-pointer'
+          onClick={() => {
+            setModalOpen(true);
+            setModalType('gifYouUp');
+            setPostState(post);
+          }}
+        />
+      )}
     </div>
   );
 };

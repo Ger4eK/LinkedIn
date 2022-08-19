@@ -7,6 +7,7 @@ import Feed from '../components/Feed';
 import Modal from '../components/Modal';
 import { useModal } from '../context/ModalContext';
 import { AnimatePresence } from 'framer-motion';
+import { PostProvider, usePost } from '../context/PostContext';
 
 export default function Home() {
   const router = useRouter();
@@ -30,7 +31,9 @@ export default function Home() {
       <main className='flex justify-center gap-x-5 px-4 sm:px-12'>
         <div className='flex flex-col md:flex-row gap-5 '>
           <Sidebar />
-          <Feed />
+          <PostProvider>
+            <Feed />
+          </PostProvider>
         </div>
         {/* Widgets */}
         <AnimatePresence>

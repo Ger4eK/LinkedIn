@@ -7,6 +7,7 @@ import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import ReplyRoundedIcon from '@mui/icons-material/ReplyRounded';
 import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
 import React, { useState } from 'react';
+import TimeAgo from 'timeago-react';
 import { modalState, modalTypeState } from '../atoms/modalAtoms';
 import { handlePostState, getPostState } from '../atoms/postAtom';
 import { useRecoilState } from 'recoil';
@@ -45,6 +46,10 @@ const Post = ({ post, modalPost }) => {
             {post.username}
           </h6>
           <p className='text-sm dark:text-white/75 opacity-80'>{post.email}</p>
+          <TimeAgo
+            datetime={post.createdAt}
+            className='text-xs dark:text-white/75 opacity-80'
+          />
         </div>
         {modalPost ? (
           <IconButton onClick={() => setModalOpen(false)}>

@@ -9,3 +9,4 @@
 - MongoDB
 - next-themes
 - framer-motion
+- timeago-react

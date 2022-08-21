@@ -20,7 +20,7 @@ function Widgets({ articles }) {
             <a
               key={article.url}
               href={`${article.url}`}
-              rel='noopener'
+              rel='noreferrer'
               target='_blank'
             >
               <div className='flex space-x-2 items-center cursor-pointer hover:bg-black/10 dark:hover:bg-black/20 px-2.5 py-1'>

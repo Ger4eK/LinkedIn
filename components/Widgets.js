@@ -17,11 +17,13 @@ function Widgets({ articles }) {
 
         <div className='space-y-1'>
           {articles.slice(0, 5).map((article) => (
-            <a href={`${article.url}`} target='_blank'>
-              <div
-                key={article.url}
-                className='flex space-x-2 items-center cursor-pointer hover:bg-black/10 dark:hover:bg-black/20 px-2.5 py-1'
-              >
+            <a
+              key={article.url}
+              href={`${article.url}`}
+              rel='noopener'
+              target='_blank'
+            >
+              <div className='flex space-x-2 items-center cursor-pointer hover:bg-black/10 dark:hover:bg-black/20 px-2.5 py-1'>
                 <FiberManualRecordRoundedIcon className='!h-2 !w-2' />
 
                 <div>
